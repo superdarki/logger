@@ -1,0 +1,70 @@
+{
+  "name": "@darkiiii/logger",
+  "version": "1.0.0",
+  "description": "A simple logging system using colors and can log to files and TTYs.",
+  "author": "darkiiii",
+  "license": "GPL-3.0",
+  "keywords": [
+    "universal-javascript",
+    "nodejs",
+    "typescript",
+    "console"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darkiiii/logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/darkiiii/logger/issues"
+  },
+  "homepage": "https://github.com/darkiiii/logger#readme",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint src --ext .ts,.js,.mjs,.cjs",
+    "format": "eslint src --ext .ts,.js,.mjs,.cjs --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.3",
+    "eslint": "^8.26.0",
+    "eslint-config-neon": "^0.1.39",
+    "svelte": "^3.52.0",
+    "typescript": "^4.8.4",
+    "unbuild": "^0.9.4"
+  },
+  "packageManager": "pnpm@7.13.4",
+  "unbuild": {
+    "entries": [
+      {
+        "builder": "mkdist",
+        "format": "esm",
+        "ext": "mjs",
+        "input": "./src/",
+        "outDir": "./dist",
+        "declaration": true
+      },
+      {
+        "builder": "mkdist",
+        "format": "cjs",
+        "ext": "cjs",
+        "input": "./src/",
+        "outDir": "./dist",
+        "declaration": false
+      }
+    ]
+  }
+}

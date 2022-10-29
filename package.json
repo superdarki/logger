@@ -1,8 +1,8 @@
 {
-  "name": "@darkiiii/logger",
+  "name": "@darki_/logger",
   "version": "1.0.0",
   "description": "A simple logging system using colors and can log to files and TTYs.",
-  "author": "darkiiii",
+  "author": "DarKi_",
   "license": "GPL-3.0",
   "keywords": [
     "universal-javascript",

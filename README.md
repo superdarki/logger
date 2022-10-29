@@ -12,23 +12,23 @@ Install package:
 
 ```sh
 # npm
-npm install @darkiiii/logger
+npm install @darki_/logger
 
 # yarn
-yarn install @darkiiii/logger
+yarn install @darki_/logger
 
 # pnpm
-pnpm install @darkiiii/logger
+pnpm install @darki_/logger
 ```
 
 Import:
 
 ```js
 // ESM
-import { Logger } from '@darkiiii/logger'
+import { Logger } from '@darki_/logger'
 
 // CommonJS
-const { Logger } = require('@darkiiii/logger')
+const { Logger } = require('@darki_/logger')
 ```
 
 ## 💻 Development
@@ -44,11 +44,11 @@ Made with 💛 by DarKi
 Published under [GPL-3.0 License](./LICENSE).
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@darkiiii/logger
-[npm-version-href]: https://npmjs.com/package/@darkiiii/logger
+[npm-version-src]: https://img.shields.io/npm/v/@darki_/logger
+[npm-version-href]: https://npmjs.com/package/@darki_/logger
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@darkiiii/logger
-[npm-downloads-href]: https://npmjs.com/package/@darkiiii/logger
+[npm-downloads-src]: https://img.shields.io/npm/dm/@darki_/logger
+[npm-downloads-href]: https://npmjs.com/package/@darki_/logger
 
 [github-actions-src]: https://img.shields.io/github/workflow/status/darkiiii/logger/build/main
 [github-actions-href]: https://github.com/darkiiii/logger/actions?query=workflow%3Abuild

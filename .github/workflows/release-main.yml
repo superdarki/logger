@@ -12,7 +12,7 @@ jobs:
         id: release
         with:
           release-type: node
-          package-name: "@eclypsedev/logger"
+          package-name: "@darki_/logger"
       - name: "Checkout"
         uses: actions/checkout@v3
         if: ${{ steps.release.outputs.release_created }}

@@ -5,20 +5,33 @@ import Color from './color';
 import {Level, Levels} from './level';
 
 // Custom Writable interface adding isTTY to every writable stream given to the logger
-export interface CWritable extends Writable {
+export interface IWritable extends Writable {
 	isTTY?: boolean;
 }
 
-export interface LoggerOptions {
+export interface ILoggerOptions {
 	colorMode?: boolean;
 	level?: Level;
-	strictMode?: boolean;
+	std?: IWritable;
 }
 
-const endl = (process.platform === "win32")?"\r\n":"\n"
+export interface ILoggerMethod {
+	(msg: string, ...args: any[]): void
+	(obj: object, msg?: string, ...args: any[]): void
+}
 
-export class Logger {
-	private readonly std: CWritable;
+export interface ILogger {
+	debug: ILoggerMethod
+	error: ILoggerMethod,
+	info: ILoggerMethod,
+	log: ILoggerMethod,
+	warn: ILoggerMethod
+}
+
+const lineEnd = (process.platform === "win32")?"\r\n":"\n"
+
+export class Logger implements ILogger {
+	private readonly std: IWritable;
 
 	private readonly level: Level;
 
@@ -26,11 +39,11 @@ export class Logger {
 
 	private indent: number = 0;
 
-	public constructor(std: Writable = process.stdout, opts?: LoggerOptions)
+	public constructor({std = process.stdout, level = Level.LOG, colorMode = true}: ILoggerOptions)
 	{
 		this.std = std;
-		this.level = opts?.level ? opts.level : Level.LOG;
-		this.color = opts?.colorMode ? opts.colorMode : false;
+		this.level = level;
+		this.color = std.isTTY ? colorMode : false;
 	}
 
 	private _time(): string {
@@ -40,7 +53,7 @@ export class Logger {
 	public write(lvl: Level, str: string, ...data: any): void {
 		if (this.level < lvl) return; // if the level of the logger is less than the content one, we should not print anything
 
-		const arr = ["[", this._time(), "] [", "] ", util.format(str, ...data), endl];
+		const arr = ["[", this._time(), "] [", "] ", util.format(str, ...data), lineEnd];
 
 		for (let iter = 0; iter < this.indent; iter++) arr[3] += "  ";
 

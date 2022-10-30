@@ -2,8 +2,8 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![build][github-build-src]][github-build-href]
-[![lint][github-lint-src]][github-lint-href]
+[![build](https://github.com/darkiiii/logger/actions/workflows/build.yml/badge.svg)](https://github.com/darkiiii/logger/actions/workflows/build.yml)
+[![lint](https://github.com/darkiiii/logger/actions/workflows/lint.yml/badge.svg)](https://github.com/darkiiii/logger/actions/workflows/lint.yml)
 
 > A simple logging system using colors and can log to files and TTYs.
 
@@ -50,9 +50,3 @@ Published under [GPL-3.0 License](./LICENSE).
 
 [npm-downloads-src]: https://img.shields.io/npm/dm/@darki_/logger
 [npm-downloads-href]: https://npmjs.com/package/@darki_/logger
-
-[github-build-src]: https://img.shields.io/github/workflow/status/darkiiii/logger/build/main
-[github-build-href]: https://github.com/darkiiii/logger/actions?query=workflow%3Abuild
-
-[github-lint-src]: https://img.shields.io/github/workflow/status/darkiiii/logger/lint/main
-[github-lint-href]: https://github.com/darkiiii/logger/actions?query=workflow%3Alint

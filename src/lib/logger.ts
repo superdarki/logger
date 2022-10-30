@@ -1,5 +1,7 @@
 import process from 'node:process';
-import * as util from 'node:util';
+import {cursorTo, clearScreenDown} from "node:readline";
+import type {InspectOptions} from 'node:util';
+import {inspect, format} from 'node:util';
 import Color from './color';
 import type {IWritable, ILogger, ILoggerOptions} from "./interfaces";
 import {Level, Levels} from './level';
@@ -29,7 +31,7 @@ export class Logger implements ILogger {
 	public write(lvl: Level, str?: string, ...data: any): void {
 		if (this.level < lvl) return; // if the level of the logger is less than the content one, we should not print anything
 
-		const arr = ["[", this._time(), "] [", "] ", util.format(str, ...data), lineEnd];
+		const arr = ["[", this._time(), "] [", "] ", format(str, ...data), lineEnd];
 
 		for (let iter = 0; iter < this.indent; iter++) arr[3] += "  ";
 
@@ -74,15 +76,13 @@ export class Logger implements ILogger {
 	};
 
 	public clear(): void {
-		throw new Error('Method not implemented.');
+		if (!this.std.isTTY) return;
+		cursorTo(this.std, 0, 0);
+		clearScreenDown(this.std);
 	};
 
-	public dir(obj: any, options?: util.InspectOptions): void {
-		this.log(util.inspect(obj, options));
-	};
-
-	public dirxml(...data: any[]): void {
-		this.log(data);
+	public dir(obj: any, options?: InspectOptions): void {
+		this.log(inspect(obj, options));
 	};
 
 	public group(...label: any[]): void {

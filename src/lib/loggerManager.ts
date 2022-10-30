@@ -1,4 +1,5 @@
 import * as process from "node:process";
+import type {InspectOptions} from "node:util";
 import type {ILogger, ILoggerOptions} from "./interfaces";
 import {Level} from "./level";
 import {Logger} from "./logger";
@@ -6,8 +7,7 @@ import {Logger} from "./logger";
 export class LoggerManager implements ILogger {
     private loggers: Logger[] = new Array<Logger>();
 
-    public constructor(...opts: ILoggerOptions[])
-    {
+    public constructor(...opts: ILoggerOptions[]) {
         if (!opts[0]) opts.push(
             {std: process.stdout, level: Level.LOG, colorMode: true},
             {std: process.stderr, level: Level.ERROR, colorMode: true}
@@ -19,6 +19,10 @@ export class LoggerManager implements ILogger {
         let size = this.loggers.length;
         for (const opt of opts) size = this.loggers.push(new Logger(opt));
         return size;
+    };
+
+    public remove(...ids: number[]): void {
+        for (const id of ids) this.loggers.splice(id, 1);
     };
 
     public write(lvl: Level, str?: string, ...data: any) {
@@ -43,5 +47,25 @@ export class LoggerManager implements ILogger {
 
     public debug(message?: any, ...optionalParams: any[]): void {
         this.write(Level.DEBUG, message, ...optionalParams);
+    };
+
+    public assert(value?: any, message?: string, ...optionalParams: any[]): void {
+        for (const logger of this.loggers) logger.assert(value, message, ...optionalParams);
+    };
+
+    public clear(): void {
+        for (const logger of this.loggers) logger.clear();
+    };
+
+    public dir(obj: any, options?: InspectOptions): void {
+        for (const logger of this.loggers) logger.dir(obj, options);
+    };
+
+    public group(...label: any[]): void {
+        for (const logger of this.loggers) logger.group(...label);
+    };
+
+    public groupEnd(): void {
+        for (const logger of this.loggers) logger.groupEnd();
     };
 }

@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.1](https://github.com/darkiiii/logger/compare/v2.0.0...v2.0.1) (2022-10-30)
+
+
+### Bug Fixes
+
+* another update to readme.md ([ed7052d](https://github.com/darkiiii/logger/commit/ed7052d569db7cfe562b43ca15abcac4e7e1f4b0))
+* implement all Logger methods to LoggerManager ([d85e985](https://github.com/darkiiii/logger/commit/d85e985052d43b241aae7c09ca76dd2362c26cc6))
+* remove dirxml and implement clear ([4d4fd2c](https://github.com/darkiiii/logger/commit/4d4fd2c05182f0a999f90839368388f2aca4d64d))
+* update build workflow ([9243108](https://github.com/darkiiii/logger/commit/9243108a9305dafdf23a57e93a02e6756942c36c))
+* update lint workflow ([298eb27](https://github.com/darkiiii/logger/commit/298eb270a0f278f0b4d8bb9c06c66691611b7e49))
+* update readme.md ([18f8456](https://github.com/darkiiii/logger/commit/18f84564d5045039a82c0b494dddc3e40fc69283))
+* update release-please action ([d13a565](https://github.com/darkiiii/logger/commit/d13a5650db5be40f7a0d242c6a64121c0d937ca1))
+
 ## [2.0.0](https://github.com/darkiiii/logger/compare/v1.0.0...v2.0.0) (2022-10-30)
 
 

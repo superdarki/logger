@@ -1,32 +1,8 @@
 import process from 'node:process';
-import type {Writable} from 'node:stream';
 import * as util from 'node:util';
 import Color from './color';
+import type {IWritable, ILogger, ILoggerOptions} from "./interfaces";
 import {Level, Levels} from './level';
-
-// Custom Writable interface adding isTTY to every writable stream given to the logger
-export interface IWritable extends Writable {
-	isTTY?: boolean;
-}
-
-export interface ILoggerOptions {
-	colorMode?: boolean;
-	level?: Level;
-	std?: IWritable;
-}
-
-export interface ILoggerMethod {
-	(msg: string, ...args: any[]): void
-	(obj: object, msg?: string, ...args: any[]): void
-}
-
-export interface ILogger {
-	debug: ILoggerMethod
-	error: ILoggerMethod,
-	info: ILoggerMethod,
-	log: ILoggerMethod,
-	warn: ILoggerMethod
-}
 
 const lineEnd = (process.platform === "win32")?"\r\n":"\n"
 

@@ -18,9 +18,11 @@ export interface ILoggerMethod {
 }
 
 export interface ILogger {
-    debug: ILoggerMethod
-    error: ILoggerMethod,
-    info: ILoggerMethod,
-    log: ILoggerMethod,
-    warn: ILoggerMethod
+    debug: ILoggerMethod;
+    error: ILoggerMethod;
+    group(...data: any): void;
+    groupEnd(): void;
+    info: ILoggerMethod;
+    log: ILoggerMethod;
+    warn: ILoggerMethod;
 }

@@ -21,6 +21,10 @@ export class LoggerManager implements ILogger {
         return size;
     };
 
+    public list(): Logger[] {
+        return this.loggers;
+    }
+
     public remove(...ids: number[]): void {
         for (const id of ids) this.loggers.splice(id, 1);
     };

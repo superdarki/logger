@@ -1,9 +1,9 @@
 import process from 'node:process';
-import {cursorTo, clearScreenDown} from "node:readline";
+import {clearScreenDown, cursorTo} from "node:readline";
 import type {InspectOptions} from 'node:util';
-import {inspect, format} from 'node:util';
+import {format, inspect} from 'node:util';
 import Color from './color';
-import type {IWritable, ILogger, ILoggerOptions} from "./interfaces";
+import type {ILogger, ILoggerOptions, IWritable} from "./interfaces";
 import {Level, Levels} from './level';
 
 const lineEnd = (process.platform === "win32")?"\r\n":"\n"
@@ -17,11 +17,11 @@ export class Logger implements ILogger {
 
 	private indent: number = 0;
 
-	public constructor({std = process.stdout, level = Level.LOG, colorMode = true}: ILoggerOptions)
+	public constructor(opts?: ILoggerOptions)
 	{
-		this.std = std;
-		this.level = level;
-		this.color = std.isTTY ? colorMode : false;
+		this.std = opts?.std ?? process.stdout;
+		this.level = opts?.level ?? Level.LOG;
+		this.color = opts?.std?.isTTY ? opts.colorMode ?? true : false;
 	};
 
 	private _time(): string {

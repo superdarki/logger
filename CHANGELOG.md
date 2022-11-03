@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/darkiiii/logger/compare/v2.0.1...v2.0.2) (2022-11-03)
+
+
+### Bug Fixes
+
+* update lint workflow ([1d6e510](https://github.com/darkiiii/logger/commit/1d6e510fe06a5e9bc5537daf985213ef8b024f75))
+
 ## [2.0.1](https://github.com/darkiiii/logger/compare/v2.0.0...v2.0.1) (2022-10-30)
 
 
